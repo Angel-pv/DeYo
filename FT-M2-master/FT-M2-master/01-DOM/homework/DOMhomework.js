@@ -54,14 +54,26 @@ ToDo.prototype.completeToDo = function () {
 //    8) Devolver la variable toDoShell
 
 function buildToDo(todo, index) {
-  // Tu código acá:
+  // Tu código acá: 
+   // extra credit 
+    let check = document.createElement('input')
+    check.type = 'checkbox'
+    check.id = index
+    check.className = 'completeCheckbox'
   var toDoShell = document.createElement('div')
+  toDoShell.className = 'toDoShell'
   toDoShell.setAttribute('class', 'toDoShell')
   var toDoText = document.createElement('spam')
-  toDoText.innerHTML = todo.description
+  toDoText.innerHTML = todo.description  
+  check.addEventListener('click', completeToDo)
+
   toDoText.setAttribute('id', index)
-  if(todo.complete) toDoText.setAttribute('class', 'completeText')
+  if(todo.complete) {
+    //toDoText.setAttribute('class', 'completeText')
+    check.checked = true
+    }
   toDoShell.appendChild(toDoText)
+  toDoShell.appendChild(check)
   toDoText.addEventListener('click', completeToDo)
   return toDoShell
 }
